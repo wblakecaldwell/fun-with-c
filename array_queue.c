@@ -8,9 +8,6 @@
 #include <stdlib.h>
 #include "array_queue.h"
 
-// enable debug info
-#define SHOW_DEBUG 1
-
 void print_queue(struct array_queue *queue);
 
 // initialize a queue - return 0 on failure
