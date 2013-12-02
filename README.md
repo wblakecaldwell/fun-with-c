@@ -1,7 +1,9 @@
 c-array-based-queue
 ===================
 
-Array-backed integer FIFO queue in C. 
+Simple (non-optimal) Array-backed integer FIFO queue in C. 
+
+Note: This can be sped up by bitmasking head and tail with array_size-1. I plan on updating at some point.
 
 Details
 -------
