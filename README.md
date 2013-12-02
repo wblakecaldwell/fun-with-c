@@ -8,6 +8,8 @@ Details
 
 Rather than use a linked list, this queue uses a fixed-size array for its storage. Initially, new values are written to the end of the array, values are read from the beginning. The array's head and tail indices are tracked to handle when the tail of the queue wraps around to the beginning of the array, or if we run out of room and need to double the array. 
 
+If you'd like to turn off the debug messages, the #define is in array_queue.c
+
 Demo
 ----
 
@@ -50,3 +52,4 @@ Then read a few more times until it's empty:
 Then add 8 to show the queue cleaning itself up:
 
     [8 (head) (tail), -100, -100, -100, -100, -100, -100, -100, -100, -100]
+
