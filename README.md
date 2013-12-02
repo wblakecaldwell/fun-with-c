@@ -8,14 +8,12 @@ Details
 
 Rather than use a linked list, this queue uses a fixed-size array for its storage. Initially, new values are written to the end of the array, values are read from the beginning. The array's head and tail indices are tracked to handle when the tail of the queue wraps around to the beginning of the array, or if we run out of room and need to double the array. 
 
-If you'd like to turn off the debug messages, the #define is in array_queue.c
-
 Demo
 ----
 
 Compile and run to see a demo run.
 
-    gcc *.c
+    gcc *.c -D SHOW_DEBUG
     ./a.out
 
 The demo performs the following:
