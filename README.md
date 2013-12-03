@@ -56,7 +56,10 @@ Then read a few more times until it's empty:
     [-100, -100, -100, 5(head), 6, 7 (tail), -100, -100]
     [-100, -100, -100, -100, 6 (head), 7 (tail), -100, -100]
     [-100, -100, -100, -100, -100, 7 (head) (tail), -100, -100]
-    [-100, -100, -100, -100, -100, -100 (head) (tail), -100, -100]
+    
+Head and tail don't really make sense here, but the queue size is 0 so they're ignored.
+
+    [-100, -100, -100, -100, -100, -100 (head), -100 (tail), -100]
 
 Then add 8 - rather than clean up the ordering (unnecessary), it starst where it left off:
 
