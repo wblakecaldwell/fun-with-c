@@ -46,6 +46,7 @@ Note that tail is now behind head, and we're out of room. Our next insert of 6 d
     [2 (head), 3, 4, 5, 6 (tail), -100, -100, -100]
     
 Add 7:
+
     [2 (head), 3, 4, 5, 6, 7 (tail), -100, -100]
 
 Then read a few more times until it's empty:
