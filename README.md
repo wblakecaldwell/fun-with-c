@@ -36,7 +36,7 @@ When we read a value, we start with 1:
 
     [-100, 2 (head), 3 (tail), -100]
 
-We than add 4, 5, 6 and have this:
+We than add 4 and 5, and have this:
 
     [-100, 2 (head), 3, 4 (tail)]
     [5 (tail), 2 (head), 3, 4]
