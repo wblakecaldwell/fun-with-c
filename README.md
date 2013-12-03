@@ -15,7 +15,7 @@ Demo
 
 Compile and execute the binary to run the unit tests in array_queue_test.c:
 
-    gcc *.c -D SHOW_DEBUG
+    gcc *.c
     ./a.out
     
 You should see:
