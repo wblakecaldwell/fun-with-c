@@ -1,7 +1,7 @@
 c-array-based-queue
 ===================
 
-Simple (non-optimal) Array-backed integer FIFO queue in C. 
+Simple Array-backed integer FIFO queue in C. 
 
 Note: The underlying array size must be a power of 2. Internally, head and tail roll-over is handled by bitmasking against (array_size - 1).
 
