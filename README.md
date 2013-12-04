@@ -14,7 +14,7 @@ The sudoku grid is represented as a grid of 9x9 cells, each with a bitmask keepi
     struct sudoku_grid
     {
         // All remaining possibilities - a bitmask; each bit position equal to (value - 1).
-        // Set to 0 for cells that are already solved.
+        // Set to 0 for cells that are already solved, initialized to 511 (0b111111111)
         unsigned int possibilities[9][9];
         
         // The known value at any cell, indexed as [row][col].
