@@ -15,26 +15,25 @@
 struct sudoku_grid
 {
     // keep track of all remaining possibilities
-    unsigned int possibilities[9][9];         // [row][col] - bitmask, 0-8 bits are set
+    unsigned int possibilities[9][9][9];            // [row][col][is value-1 possible] - 0 if not, 1 if so
+    unsigned int possibility_count[9][9];           // number of possibilities per [row][col]
     
     // the known value at any cell
-    unsigned int *values;                     // [row][col] - 0 means not set
+    unsigned int values[9][9];                      // [row][col] - 0 means not set
 };
 
 // create the grid
-int create_sudoku_grid(struct sudoku_grid **grid);
+struct sudoku_grid create_sudoku_grid();
 
 // set the starting values on the input sudoku grid
 int initialize_grid(struct sudoku_grid *grid, unsigned int starting_values[9][9]);
 
-// destroy the grid
-int destroy_sudoku_grid(struct sudoku_grid **grid);
-
-// set a value on the grid
-int set_grid_value(struct sudoku_grid *grid, unsigned int row, unsigned int col, unsigned int val);
-
 // return 1 if the grid is complete, 0 if not
 int is_sudoku_grid_complete(struct sudoku_grid *grid);
+
+// solve the input grid by trying combinations of possibilities
+// return 1 on success
+int solve_by_searching(struct sudoku_grid **grid);
 
 // print the grid
 int print_sudoku_grid(struct sudoku_grid *grid);

@@ -10,15 +10,14 @@
 #include <stdio.h>
 #import "sudoku.h"
 
-void successful_attempt();
-void unsuccessful_attempt();
-void solve_and_destroy(struct sudoku_grid **grid);
+void solve_easy_puzzle();
+void solve_hard_puzzle();
+void solve(char *name, struct sudoku_grid *grid);
 
 int main(int argc, const char * argv[])
 {
-    successful_attempt();
-    
-    unsuccessful_attempt();
+    solve_easy_puzzle();
+    solve_hard_puzzle();
 }
 
 //
@@ -27,12 +26,10 @@ int main(int argc, const char * argv[])
 //
 // Wikipedia's Sudoku example: http://en.wikipedia.org/wiki/Sudoku
 //
-void successful_attempt()
+void solve_easy_puzzle()
 {
-    struct sudoku_grid *grid;
-    
-    create_sudoku_grid(&grid);
-    initialize_grid(grid, (unsigned int[9][9]){
+    struct sudoku_grid grid = create_sudoku_grid();
+    initialize_grid(&grid, (unsigned int[9][9]){
         {5, 3, 0,   0, 7, 0,    0, 0, 0},
         {6, 0, 0,   1, 9, 5,    0, 0, 0},
         {0, 9, 8,   0, 0, 0,    0, 6, 0},
@@ -45,7 +42,7 @@ void successful_attempt()
         {0, 0, 0,   4, 1, 9,    0, 0, 5},
         {0, 0, 0,   0, 8, 0,    0, 7, 9}
     });
-    solve_and_destroy(&grid);
+    solve("Wikipedia's Sudoku", &grid);
 }
 
 
@@ -53,15 +50,13 @@ void successful_attempt()
 // Example of an unsuccessfully-solved Sudoku puzzle.
 // Puzzle is unable to be solved by elimination alone.
 //
-// "World's hardest sudoku: can you crack it?"
+// "World's hardest sudoku: can you crack it?" (YES!)
 // http://www.telegraph.co.uk/science/science-news/9359579/Worlds-hardest-sudoku-can-you-crack-it.html
 //
-void unsuccessful_attempt()
+void solve_hard_puzzle()
 {
-    struct sudoku_grid *grid;
-    
-    create_sudoku_grid(&grid);
-    initialize_grid(grid, (unsigned int[9][9]){
+    struct sudoku_grid grid = create_sudoku_grid();
+    initialize_grid(&grid, (unsigned int[9][9]){
         {8, 0, 0,   0, 0, 0,    0, 0, 0},
         {0, 0, 3,   6, 0, 0,    0, 0, 0},
         {0, 7, 0,   0, 9, 0,    2, 0, 0},
@@ -74,20 +69,29 @@ void unsuccessful_attempt()
         {0, 0, 8,   5, 0, 0,    0, 1, 0},
         {0, 9, 0,   0, 0, 0,    4, 0, 0}
     });
-    solve_and_destroy(&grid);
+    solve("World's Hardest Sudoku", &grid);
 }
 
 // solve the puzzle, print it, and then clean up
-void solve_and_destroy(struct sudoku_grid **grid)
+void solve(char *name, struct sudoku_grid *grid)
 {
-    if(!is_sudoku_grid_complete(*grid))
+    if(!is_sudoku_grid_complete(grid))
     {
-        printf("Couldn't solve grid by elimination alone :(\n");
+        printf("Couldn't solve %s by elimination alone\n", name);
+        print_sudoku_grid(grid);
+        if(solve_by_searching(&grid))
+        {
+            printf("Solved %s by searching\n", name);
+            print_sudoku_grid(grid);
+        }
+        else
+        {
+            printf("Couldn't solve %s by searching\n", name);
+        }
     }
     else
     {
-        printf("Solved by elimination! :)\n");
+        printf("Solved %s by elimination\n", name);
+        print_sudoku_grid(grid);
     }
-    print_sudoku_grid(*grid);
-    destroy_sudoku_grid(grid);
 }
