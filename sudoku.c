@@ -226,7 +226,6 @@ int solve_by_searching(struct sudoku_grid **grid)
 {
     unsigned int row;
     unsigned int col;
-    
     if(!cell_with_fewest_possibilities(*grid, &row, &col))
     {
         // base case: nothing more to do!
@@ -271,6 +270,11 @@ int cell_with_fewest_possibilities(struct sudoku_grid *grid, unsigned int *row, 
     {
         for(int c=0; c<9; c++)
         {
+            if(!grid->possibility_count[r][c] && !grid->values[r][c])
+            {
+                // no possibility nor solution for this cell - abort now
+                return 0;
+            }
             if(grid->possibility_count[r][c] > 0 && grid->possibility_count[r][c] < min)
             {
                 // found our least number of possibilities so far
