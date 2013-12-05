@@ -3,7 +3,7 @@
 //
 //  Sudoku Solver
 //
-//  Uses elimination to solve. This won't work on very difficult puzzles.
+//  Uses elimination and possibility searching to solve any Sudoku puzzle.
 //
 //  Created by Blake Caldwell on 12/3/13.
 //  Copyright (c) 2013 Blake Caldwell. All rights reserved.
