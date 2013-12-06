@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include "array_queue.h"
 
+// Note: I didn't write this method - copied and pasted :)
 // make sure the input value is a power of 2
 int is_power_of_two (unsigned int x)
 {
