@@ -1,5 +1,5 @@
 //
-//  MyHashTable.h
+//  hashtable.h
 //  Simple C Hash Table
 //
 //  Header
