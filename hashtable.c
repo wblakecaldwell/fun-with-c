@@ -1,5 +1,5 @@
 //
-//  MyHashTable.c
+//  hashtable.c
 //  Simple C Hash Table
 //
 //  Created by Blake Caldwell on 12/15/13.
