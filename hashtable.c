@@ -135,7 +135,7 @@ int addToHashTable(struct hashTable *hashTable, char *key, char *value)
         {
             // already exists in the list - update the value
             list->value = value;
-            return 1;
+            return(1);
         }
         
         prev = list;
@@ -166,7 +166,7 @@ int removeFromHashTable(struct hashTable *hashTable, char *key)
     if(!hashTable)
     {
         // invalid input
-        return 0;
+        return(0);
     }
     
     hc = hashCode(key);
@@ -175,7 +175,7 @@ int removeFromHashTable(struct hashTable *hashTable, char *key)
     if(!(list = *(hashTable->lists + offset)))
     {
         // string isn't in the hashtable, but who cares?
-        return 1;
+        return(1);
     }
     
     prev = NULL;
@@ -195,12 +195,12 @@ int removeFromHashTable(struct hashTable *hashTable, char *key)
                 prev->next = list->next;
             }
             free(list);
-            return 1;
+            return(1);
         }
         prev = list;
         list = list->next;
     }
-    return 1;
+    return(1);
 }
 
 // return whether we found the key
