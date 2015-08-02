@@ -1,69 +1,18 @@
-<<<<<<< HEAD
-c-hashtable
-===========
-
-Simple hash table in C
-
-Note: This is not intended for production use.
-
-=======
 c-array-based-queue
 ===================
 
 Simple Array-backed integer FIFO queue in C. 
 
 Note: The underlying array size must be a power of 2. Internally, head and tail roll-over is handled by bitmasking against (array_size - 1).
->>>>>>> 737d8f52fd8fd5704ae4e638312e0fb5915751b6
 
 Details
 -------
 
-<<<<<<< HEAD
-This [hash table](http://en.wikipedia.org/wiki/Hash_table) implementation allows you to specify how many "buckets" it will use. Each bucket is a linked list for simplicity. This could be extended to point to an array, which might provide a little better performance. Keys and values added are not copied, so it's up to the caller to manage those pointers.
-
-Operations:  
-
-- create - with specified number of buckets
-- destroy - frees all allocated memory
-- add/set a key/value
-- remove a key/value
-- retrieve value for a key
-
-=======
 Rather than use a linked list, this queue uses a fixed-size array for its storage. Initially, new values are written to the end of the array, values are read from the beginning. The array's head and tail indices are tracked to handle when the tail of the queue wraps around to the beginning of the array, or if we run out of room and need to double the array. 
->>>>>>> 737d8f52fd8fd5704ae4e638312e0fb5915751b6
 
 Demo
 ----
 
-<<<<<<< HEAD
-Compile and execute the binary to run the demo use case in main.c:
-
-	gcc *.c
-	./a.out
-	
-You should see:
-
-	Adding 'hello'=>'world', 'color'=>'blue' and printing:
-	-----
-	hello -> world
-	color -> blue
-	
-	
-	Changing 'hello' value to 'goodbye', then printing:
-	-----
-	hello -> goodbye
-	color -> blue
-	
-	
-	Removing 'hello' and printing:
-	-----
-	color -> blue
-	
-	
-	Removing 'color' and printing:
-	-----
-=======
 Compile and execute the binary to run the unit tests in array_queue_test.c:
 
     gcc *.c
@@ -116,4 +65,4 @@ Then add 8 - rather than clean up the ordering (unnecessary), it starst where it
 
     [-100, -100, -100, -100, -100, -100, 8 (head) (tail), -100]
 
->>>>>>> 737d8f52fd8fd5704ae4e638312e0fb5915751b6
+
